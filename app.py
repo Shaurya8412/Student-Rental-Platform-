@@ -213,10 +213,6 @@ def _card_html(row, budget_ceiling: float | None = None) -> str:
     <div class="chips">{''.join(chips)}</div>
     <p class="expl">{_esc(row['explanation'])}</p>
     {review}
-    <div class="breakdown">Criterion scores — budget
-      {row['budget_score']:.2f} · distance {row['location_score']:.2f} ·
-      safety {row['safety_score']:.2f} · wifi {row['wifi']:.0f} ·
-      food {row['food_included']:.0f}</div>
   </div>
 </div>"""
 
