@@ -119,7 +119,7 @@ ADDRESS_KEYWORDS = [
 # ---------------------------------------------------------------------------
 # LLM settings
 # ---------------------------------------------------------------------------
-DEFAULT_PROVIDER = "gemini"  # override with env LLM_PROVIDER
+DEFAULT_PROVIDER = "groq"  # override with env LLM_PROVIDER
 LLM_PROVIDERS = {
     "gemini": {
         "env_key": "GEMINI_API_KEY",
@@ -132,6 +132,10 @@ LLM_PROVIDERS = {
     "anthropic": {
         "env_key": "ANTHROPIC_API_KEY",
         "model": "claude-3-5-haiku-latest",
+    },
+    "groq": {
+        "env_key": "GROQ_API_KEY",
+        "model": "openai/gpt-oss-120b",
     },
 }
 LLM_TEMPERATURE = 0.0

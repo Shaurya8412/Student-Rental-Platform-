@@ -48,7 +48,7 @@ except ImportError:  # pragma: no cover - component not installed
 # into the environment, so the rest of the app sees them like a .env.
 try:
     for _name in ("GEMINI_API_KEY", "OPENAI_API_KEY", "ANTHROPIC_API_KEY",
-                  "LLM_PROVIDER", "LLM_MODEL"):
+                  "GROQ_API_KEY", "LLM_PROVIDER", "LLM_MODEL"):
         if _name in st.secrets and not os.getenv(_name):
             os.environ[_name] = str(st.secrets[_name])
 except Exception:
@@ -418,7 +418,7 @@ def main() -> None:
             f"export {key_env}=\"your-key-here\"\n"
             f"streamlit run app.py\n```\n"
             "To use a different provider, also set `LLM_PROVIDER` to "
-            "`gemini`, `openai` or `anthropic` (and that provider's "
+            "`groq`, `gemini`, `openai` or `anthropic` (and that provider's "
             "key variable). See `.env.example` in the project folder.")
         return
 

@@ -173,6 +173,19 @@ class LLMClient:
             headers = {"Content-Type": "application/json",
                        "Authorization": f"Bearer {self.api_key}"}
             extract = lambda d: d["choices"][0]["message"]["content"]  # noqa: E731
+        elif self.provider == "groq":
+            url = "https://api.groq.com/openai/v1/chat/completions"
+            body = {
+                "model": self.model,
+                "temperature": config.LLM_TEMPERATURE,
+                "response_format": {"type": "json_object"},
+                "messages": [{"role": "system", "content": system},
+                             {"role": "user", "content": user}],
+            }
+            headers = {"Content-Type": "application/json",
+                       "Authorization": f"Bearer {self.api_key}",
+                       "User-Agent": "StudentRentalDSS/1.0"}
+            extract = lambda d: d["choices"][0]["message"]["content"]  # noqa: E731
         else:  # anthropic
             url = "https://api.anthropic.com/v1/messages"
             body = {
